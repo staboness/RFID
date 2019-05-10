@@ -10,12 +10,13 @@ public class sqlConnect {
     public void changeLayout(int layout){
         journalFrame journal = new journalFrame();
         addUser mainpanel = new addUser();
+        scanCardLayout scan = new scanCardLayout();
         if (layout == 1) {
             journal.setVisible(true);
         } else if (layout == 2) {
             mainpanel.setVisible(true);
-        } else {
-            System.out.println("Error");
+        } else if (layout == 3){
+            scan.setVisible(true);
         }
     }
     //Handles login operation
@@ -43,10 +44,10 @@ public class sqlConnect {
         }
     }
     //Handles user exist check
-    public static ArrayList<String> checkifExists (String firstname, String secname, String patron, String photopath) throws Exception {
+    public static ArrayList<String> checkifExists (String firstname, String secname, String patron, String photopath, String rfid) throws Exception {
         try {
             Connection connection = getConnection();
-            PreparedStatement getQuery = connection.prepareStatement("SELECT firstname, secondname, patronymic, photo FROM users");
+            PreparedStatement getQuery = connection.prepareStatement("SELECT firstname, secondname, patronymic, photo, rfid FROM users");
             ResultSet result = getQuery.executeQuery();
             ArrayList<String> array = new ArrayList<>();
             while(result.next()){
@@ -54,6 +55,7 @@ public class sqlConnect {
                 array.add(result.getString("secondname"));
                 array.add(result.getString("patronymic"));
                 array.add(result.getString("photo"));
+                array.add(result.getString("rfid"));
             }
             return array;
         } catch (Exception ex) {
@@ -62,16 +64,16 @@ public class sqlConnect {
         }
     }
     //Post user to database
-    public static void postUser(String firstname, String secname, String patron, String photopath, String position, String accesslevel) throws Exception {
+    public static void postUser(String firstname, String secname, String patron, String photopath, String position, String accesslevel, String rfid) throws Exception {
         addUser addUser = new addUser();
         try {
             Connection connection = getConnection();
             String fixedPath = photopath.replace("\\", "\\\\");
             ArrayList<String> array;
-            array = checkifExists(firstname, secname, patron, photopath);
-            if (!array.contains(firstname) && !array.contains(secname) && !array.contains(patron) && !array.contains(photopath)) {
-                PreparedStatement post = connection.prepareStatement("INSERT INTO users (firstname, secondname, patronymic, photo, accesslevel, position) " +
-                        "VALUES ('" + firstname + "','" + secname + "','" + patron + "','" + fixedPath + "','" + accesslevel + "', '" + position + "')");
+            array = checkifExists(firstname, secname, patron, photopath, rfid);
+            if (!array.contains(firstname) && !array.contains(secname) && !array.contains(patron) && !array.contains(photopath) && !array.contains(rfid)) {
+                PreparedStatement post = connection.prepareStatement("INSERT INTO users (firstname, secondname, patronymic, photo, rfid, accesslevel, position) " +
+                        "VALUES ('" + firstname + "','" + secname + "','" + patron + "','" + fixedPath + "','" + rfid +"', '"+ accesslevel + "', '" + position + "')");
                 post.executeUpdate();
             } else {
                 addUser.ShowError("Пользователь уже существует!");
@@ -90,7 +92,7 @@ public class sqlConnect {
             String password = "root";
             Class.forName(driver);
             Connection connection = DriverManager.getConnection(url, login, password);
-            System.out.println("Connected successfully");
+           //System.out.println("Connected successfully");
             return connection;
         } catch (Exception e) {
             System.out.print(e);

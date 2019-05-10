@@ -7,7 +7,7 @@ public class loginFrame extends JFrame {
     private JLabel loginlabel = new JLabel("Логин:");
     private JLabel passlabel = new JLabel("Пароль:");
     private JTextField logintext = new JTextField("",8);
-    private JTextField passtext = new JTextField("", 8);
+    private JPasswordField passtext = new JPasswordField("", 8);
     private JButton loginbtn = new JButton("Войти");
     sqlConnect sql;
 
