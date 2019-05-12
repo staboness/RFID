@@ -4,17 +4,23 @@ import com.fazecast.jSerialComm.SerialPortEvent;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static java.lang.Thread.currentThread;
 
 public class scanCardLayout extends JFrame {
+
     // used for serial communication:
     String readline;
     SerialPort comPort;
     String commPort = "COM7";
     int baudrate = 9600;
     private JLabel scanmsg = new JLabel("Ожидание сканирования карты...");
+    protected JButton manual = new JButton("Ввести UID вручную");
 
     public scanCardLayout() {
-        initializeSerialPort();
+        SwingUtilities.isEventDispatchThread();
         setTitle("RFID APP");
         setLayout(new FlowLayout());
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -24,8 +30,30 @@ public class scanCardLayout extends JFrame {
         container.setLayout(null);
         this.setResizable(false);
         container.add(scanmsg);
+        container.add(manual);
         scanmsg.setBounds(50,80,250,25);
+        manual.setBounds(25,100,250,25);
+        manual.addActionListener(new manualEnter());
+        initializeSerialPort();
     }
+    class manualEnter implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            addUser au = new addUser();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        public void run() {
+                            System.out.println(currentThread());
+                            au.rfid.setText("GGGGG");
+                            au.rfid.paintImmediately(au.rfid.getBounds());  // repaint(), etc. according to changed states
+                        }
+                    });
+                }
+            }).run();
+        }
+    }
+
     void initializeSerialPort() {
         //System.out.println("Connecting to "+commPort+" with speed "+baudrate+" (check these from Arduino IDE!)");
         comPort = SerialPort.getCommPort(commPort);
@@ -74,8 +102,8 @@ public class scanCardLayout extends JFrame {
     }
 
     public void cuid(String id) {
-        addUser add = new addUser();
         System.out.println("cuid=" + id + ".");
-        add.rfid.setText(id);
+
     }
+
 }

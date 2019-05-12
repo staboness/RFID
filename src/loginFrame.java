@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class loginFrame extends JFrame {
     private JLabel loginlabel = new JLabel("Логин:");
     private JLabel passlabel = new JLabel("Пароль:");

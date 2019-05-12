@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+
 public class journalFrame extends JFrame {
+
     private JLabel imglabel = new JLabel();
     private JTextField firstname = new JTextField("", 8); private JLabel namelabel = new JLabel("Имя:");
     private JTextField secname = new JTextField("", 8); private JLabel secnamelabel = new JLabel("Фамилия:");
@@ -72,10 +74,10 @@ public class journalFrame extends JFrame {
     }
     class addUserEvent implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            sqlConnect sql = new sqlConnect();
+            layoutChanger layout = new layoutChanger();
             try {
                 dispose();
-                sql.changeLayout(2);
+                layout.changeLayout(2);
             } catch (Exception ex) {
                 System.out.println(ex);
             }

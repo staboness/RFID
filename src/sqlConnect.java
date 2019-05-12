@@ -1,23 +1,38 @@
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
+import static java.lang.Thread.currentThread;
 
 public class sqlConnect {
     public static void main(String[] args) throws Exception {
         loginFrame login = new loginFrame();
-        getConnection();
+       // addUser usr = new addUser();
+       // scanCardLayout sc = new scanCardLayout();
+       // journalFrame jr = new journalFrame();
+       // Thread jour = new Thread(jr);
+       // Thread scan = new Thread(sc);
+       // Thread log = new Thread(login);
+       // Thread au = new Thread(usr);
+       // jour.start();
+       // scan.start();
+       // log.start();
+       // au.start();
+
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    getConnection();
+                    System.out.println(currentThread());
+                    Thread.sleep(1000);
+                } catch (Exception ex){
+                    System.out.println(ex);
+                }
+            }
+        });
+
+
         login.setVisible(true);
-    }
-    public void changeLayout(int layout){
-        journalFrame journal = new journalFrame();
-        addUser mainpanel = new addUser();
-        scanCardLayout scan = new scanCardLayout();
-        if (layout == 1) {
-            journal.setVisible(true);
-        } else if (layout == 2) {
-            mainpanel.setVisible(true);
-        } else if (layout == 3){
-            scan.setVisible(true);
-        }
     }
     //Handles login operation
     public static boolean loginHandler(String login, String password) throws Exception {
@@ -92,7 +107,7 @@ public class sqlConnect {
             String password = "root";
             Class.forName(driver);
             Connection connection = DriverManager.getConnection(url, login, password);
-           //System.out.println("Connected successfully");
+            System.out.println("Connected successfully");
             return connection;
         } catch (Exception e) {
             System.out.print(e);
