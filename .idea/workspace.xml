@@ -1,27 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/MainGUI.java" line="131" mnemonic="8" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3956c631-67aa-47f5-8660-860ebecce9ad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/layoutChanger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$imageButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/addUser$imageButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$journal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/addUser$journal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$postButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/addUser$postButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$scanRFID.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/addUser$scanRFID.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/addUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/journalFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/journalFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/journalFrame$addUserEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/journalFrame$addUserEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/journalFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/journalFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/loginFrame$loginListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/loginFrame$loginListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/loginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/loginFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/scanCardLayout$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/scanCardLayout$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/scanCardLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/scanCardLayout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RFID/sqlConnect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/sqlConnect$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/sqlConnect$Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/sqlConnect$Users.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/sqlConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/sqlConnect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/addUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/addUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/journalFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/journalFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/loginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scanCardLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/scanCardLayout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sqlConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sqlConnect.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -33,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sqlConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+            <state relative-caret-position="68">
+              <caret line="88" column="75" lean-forward="true" selection-start-line="88" selection-start-column="75" selection-end-line="88" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -57,20 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scanCardLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
+            <state relative-caret-position="34">
               <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/addUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,8 +57,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/loginFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="68">
               <caret line="4" selection-start-line="4" selection-end-line="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/addUser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2125">
+              <caret line="152" column="5" selection-start-line="150" selection-start-column="4" selection-end-line="152" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/MainGUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="702">
+              <caret line="195" column="13" lean-forward="true" selection-start-line="195" selection-start-column="13" selection-end-line="195" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,10 +93,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/journalFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            <state relative-caret-position="425">
+              <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3205#3376#0" expanded="true" />
+                <element signature="e#3375#3376#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,12 +122,13 @@
         <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/GUI.java" />
         <option value="$PROJECT_DIR$/src/userInterface.java" />
-        <option value="$PROJECT_DIR$/src/addUser.java" />
         <option value="$PROJECT_DIR$/src/scanCardLayout.java" />
         <option value="$PROJECT_DIR$/src/journalFrame.java" />
         <option value="$PROJECT_DIR$/src/loginFrame.java" />
-        <option value="$PROJECT_DIR$/src/sqlConnect.java" />
         <option value="$PROJECT_DIR$/src/layoutChanger.java" />
+        <option value="$PROJECT_DIR$/src/addUser.java" />
+        <option value="$PROJECT_DIR$/src/sqlConnect.java" />
+        <option value="$PROJECT_DIR$/src/MainGUI.java" />
       </list>
     </option>
   </component>
@@ -139,8 +142,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -161,10 +162,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557672886875" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557691869089" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../RFID_toDELETE" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -213,7 +216,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13859275" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1401919" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -262,20 +265,10 @@
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/journalFrame.java">
+    <entry file="file://$PROJECT_DIR$/src/scanCardLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/addUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+        <state relative-caret-position="34">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -289,9 +282,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sqlConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="88" column="75" lean-forward="true" selection-start-line="88" selection-start-column="75" selection-end-line="88" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/loginFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -299,20 +302,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scanCardLayout.java">
+    <entry file="file://$PROJECT_DIR$/src/addUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        <state relative-caret-position="2125">
+          <caret line="152" column="5" selection-start-line="150" selection-start-column="4" selection-end-line="152" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sqlConnect.java">
+    <entry file="file://$PROJECT_DIR$/src/journalFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="47" lean-forward="true" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
+        <state relative-caret-position="425">
+          <caret line="53" column="35" lean-forward="true" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3205#3376#0" expanded="true" />
+            <element signature="e#3375#3376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="702">
+          <caret line="195" column="13" lean-forward="true" selection-start-line="195" selection-start-column="13" selection-end-line="195" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

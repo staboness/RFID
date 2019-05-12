@@ -6,6 +6,7 @@ import static java.lang.Thread.currentThread;
 public class sqlConnect {
     public static void main(String[] args) throws Exception {
         loginFrame login = new loginFrame();
+        MainGUI gui = new MainGUI();
        // addUser usr = new addUser();
        // scanCardLayout sc = new scanCardLayout();
        // journalFrame jr = new journalFrame();
@@ -18,7 +19,7 @@ public class sqlConnect {
        // log.start();
        // au.start();
 
-        EventQueue.invokeLater(new Runnable() {
+        Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -30,9 +31,9 @@ public class sqlConnect {
                 }
             }
         });
-
-
-        login.setVisible(true);
+        th.start();
+        EventQueue.invokeLater(gui.r);
+       // login.setVisible(true);
     }
     //Handles login operation
     public static boolean loginHandler(String login, String password) throws Exception {
