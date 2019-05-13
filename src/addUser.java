@@ -29,8 +29,8 @@ public class addUser extends JFrame {
     private JButton unclickable = new JButton("Добавление пользователя");
     private JButton journal = new JButton("Журнал пользователей");
     private final String[] accesslevel = {"1", "2"};
-    sqlConnect sql;
-    scanCardLayout scan;
+    SqlConnect sql;
+    ScanCardLayout scan;
 
     public addUser() {
         SwingUtilities.isEventDispatchThread();
@@ -89,14 +89,14 @@ public class addUser extends JFrame {
 
     class scanRFID implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            layoutChanger layout = new layoutChanger();
+            LayoutChanger layout = new LayoutChanger();
             layout.changeLayout(3);
         }
     }
 
     class journal implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            layoutChanger layout = new layoutChanger();
+            LayoutChanger layout = new LayoutChanger();
             try {
                 layout.changeLayout(1);
                 dispose();

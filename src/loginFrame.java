@@ -10,7 +10,7 @@ public class loginFrame extends JFrame {
     private JTextField logintext = new JTextField("",8);
     private JPasswordField passtext = new JPasswordField("", 8);
     private JButton loginbtn = new JButton("Войти");
-    sqlConnect sql;
+    SqlConnect sql;
 
 
     loginFrame() {

@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 import static java.lang.Thread.currentThread;
 
-public class scanCardLayout extends JFrame {
+public class ScanCardLayout extends JFrame {
 
     // used for serial communication:
     String readline;
@@ -19,7 +19,7 @@ public class scanCardLayout extends JFrame {
     private JLabel scanmsg = new JLabel("Ожидание сканирования карты...");
     protected JButton manual = new JButton("Ввести UID вручную");
 
-    public scanCardLayout() {
+    public ScanCardLayout() {
         SwingUtilities.isEventDispatchThread();
         setTitle("RFID APP");
         setLayout(new FlowLayout());
@@ -38,19 +38,16 @@ public class scanCardLayout extends JFrame {
     }
     class manualEnter implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            addUser au = new addUser();
-            new Thread(new Runnable() {
+            MainGUI gui = new MainGUI();
+            Thread th = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
                             System.out.println(currentThread());
-                            au.rfid.setText("GGGGG");
-                            au.rfid.paintImmediately(au.rfid.getBounds());  // repaint(), etc. according to changed states
+                            gui.rfid.setText("GGGGGGG");
+                            gui.rfid.repaint();
+                              // repaint(), etc. according to changed states
                         }
-                    });
-                }
-            }).run();
+            });
         }
     }
 

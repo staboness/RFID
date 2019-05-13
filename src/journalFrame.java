@@ -21,7 +21,7 @@ public class journalFrame extends JFrame {
     JScrollPane pane = new JScrollPane(table);
 
     public journalFrame(){
-        sqlConnect sql = new sqlConnect();
+        SqlConnect sql = new SqlConnect();
         setTitle("RFID APP");
         setLayout(new FlowLayout());
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -74,7 +74,7 @@ public class journalFrame extends JFrame {
     }
     class addUserEvent implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            layoutChanger layout = new layoutChanger();
+            LayoutChanger layout = new LayoutChanger();
             try {
                 dispose();
                 layout.changeLayout(2);

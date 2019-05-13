@@ -1,7 +1,7 @@
-import com.sun.tools.javac.Main;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,10 +9,15 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+import static java.lang.Thread.currentThread;
+
 class MainGUI {
-        Runnable r = new Runnable() {
+    JTextField rfid = new JTextField("", 10);
+    private String cuid;
+        Thread r = new Thread(new Runnable() {
             @Override
             public void run() {
+                System.out.println("MainGUI Thread: " + currentThread());
                 //Content
                 JLabel imglabel = new JLabel();
                 JTextField firstname = new JTextField("", 10);
@@ -22,7 +27,6 @@ class MainGUI {
                 JTextField patron = new JTextField("", 10);
                 JLabel patronlabel = new JLabel("Отчество:");
                 JLabel rfidlabel = new JLabel("RFID:");
-                JTextField rfid = new JTextField("", 10);
                 JButton selectfile = new JButton("Фото");
                 JFileChooser filechooser = new JFileChooser();
                 JTextField position = new JTextField("", 10);
@@ -37,13 +41,11 @@ class MainGUI {
                 JTable table = new JTable();
                 JScrollPane scrollpane = new JScrollPane(table);
                 JComboBox combobox = new JComboBox(accesslevel);
-                sqlConnect sql = new sqlConnect();
+                SqlConnect sql = new SqlConnect();
                 //Initializing Nested Frames
                 final JFrame frame = new JFrame("Main GUI Panel");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new BorderLayout(5,5));
-                Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-                frame.setBounds(dim.width / 3 - frame.getSize().width / 3, dim.height / 4 - frame.getSize().height / 4, 640, 480);
                 final JPanel pane = new JPanel(new BorderLayout(5,5));
                 frame.add(pane, BorderLayout.CENTER);
                 final JPanel leftpane = new JPanel(new GridBagLayout());
@@ -64,6 +66,8 @@ class MainGUI {
                 journal.setPreferredSize(new Dimension(250,30));
                 imglabel.setPreferredSize(new Dimension(300,20));
                 //Left pane
+                c.fill = GridBagConstraints.HORIZONTAL;
+                leftpane.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(10, 10, 10, 10), new EtchedBorder()));
                 c.weightx = 0.5;
                 c.insets = new Insets(4,4,0,0);
                 c.weighty = 0.5;
@@ -107,6 +111,7 @@ class MainGUI {
                 c.gridy++; c.gridwidth = 2; c.gridx = 0;
                 leftpane.add(button,c);
                 //center pane
+                centerpane.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(10, 10, 10, 10), new EtchedBorder()));
                 centerpane.add(imglabel);
                 //right pane (TABLE for MSQL)
                 DefaultTableModel model = new DefaultTableModel();
@@ -115,26 +120,34 @@ class MainGUI {
                 rightpane.add(scrollpane);
                 table.setFillsViewportHeight(true);
                 table.setPreferredScrollableViewportSize(new Dimension(600,100));
-                Object[] rowData = new Object[7];
-                for(int i = 0; i < sql.getUsers().size(); i++) {
-                    rowData[0] = sql.getUsers().get(i).getId();
-                    rowData[1] = sql.getUsers().get(i).getFname();
-                    rowData[2] = sql.getUsers().get(i).getSname();
-                    rowData[3] = sql.getUsers().get(i).getLname();
-                    rowData[4] = sql.getUsers().get(i).getPhoto();
-                    rowData[5] = sql.getUsers().get(i).getAccess();
-                    rowData[6] = sql.getUsers().get(i).getPosition();
-                    model.addRow(rowData);
-                }
+                Thread th = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Object[] rowData = new Object[7];
+                        for(int i = 0; i < sql.getUsers().size(); i++) {
+                            rowData[0] = sql.getUsers().get(i).getId();
+                            rowData[1] = sql.getUsers().get(i).getFname();
+                            rowData[2] = sql.getUsers().get(i).getSname();
+                            rowData[3] = sql.getUsers().get(i).getLname();
+                            rowData[4] = sql.getUsers().get(i).getPhoto();
+                            rowData[5] = sql.getUsers().get(i).getAccess();
+                            rowData[6] = sql.getUsers().get(i).getPosition();
+                            model.addRow(rowData);
+                        }
+                    }
+                });
+                th.start();
                 //misc frame stuff
                 unclickable.setEnabled(false);
               //  bottompane.add(unclickable);
              //   bottompane.add(journal);
                 frame.pack();
                 frame.setVisible(true);
+                frame.setLocationRelativeTo(null);
             //    rfid.setEnabled(false);
                 unclickable.setEnabled(false);
-                frame.setResizable(false);
+              //  frame.setResizable(false);
+
                 //Select image of user button
                 selectfile.addActionListener(new ActionListener() {
                     @Override
@@ -161,7 +174,7 @@ class MainGUI {
                 button.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        sqlConnect sql = new sqlConnect();
+                        SqlConnect sql = new SqlConnect();
                         try {
                             if (firstname.getText().equals("") || secname.getText().equals("") || patron.getText().equals("") || imglabel == null || position.getText().equals("")) {
                                 ShowError("Вы заполнили не все поля!");
@@ -173,10 +186,6 @@ class MainGUI {
                                         position.getText().trim(),
                                         combobox.getSelectedItem().toString(),
                                         rfid.getText().trim());
-                                        scrollpane.repaint();
-                                        table.revalidate();
-                                        scrollpane.revalidate();
-                                        table.repaint();
                             }
                         } catch (Exception ex) {
                             ShowError("Вы не выбрали изображение/произошла другая ошибка!");
@@ -188,15 +197,27 @@ class MainGUI {
                 rfidbtn.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        layoutChanger layout = new layoutChanger();
-                        layout.changeLayout(3);
+                        CardLayout card = new CardLayout();
+                        LayoutChanger layout = new LayoutChanger();
+                        layout.changeLayout(2);
+                        rfid.setText(card.cuid);
                     }
                 });
 
             }
-        };
+        });
+    public void SetRfid() {
+        CardLayout card = new CardLayout();
+        rfid.setText(card.GetUID());
+        System.out.println(card.GetUID());
+    }
+
+    public void PrintThread(){
+        System.out.println("MainGUI Thread While CardLayout Launched " + currentThread());
+        SetRfid();
+    }
 
     public void ShowError(String errorMsg) {
-        JOptionPane.showMessageDialog(null, errorMsg, "Ошибка", JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(null, errorMsg, "Ошибка", JOptionPane.ERROR_MESSAGE);
     }
 }

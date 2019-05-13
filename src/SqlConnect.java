@@ -1,24 +1,12 @@
+import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
 import static java.lang.Thread.currentThread;
 
-public class sqlConnect {
+public class SqlConnect {
     public static void main(String[] args) throws Exception {
-        loginFrame login = new loginFrame();
-        MainGUI gui = new MainGUI();
-       // addUser usr = new addUser();
-       // scanCardLayout sc = new scanCardLayout();
-       // journalFrame jr = new journalFrame();
-       // Thread jour = new Thread(jr);
-       // Thread scan = new Thread(sc);
-       // Thread log = new Thread(login);
-       // Thread au = new Thread(usr);
-       // jour.start();
-       // scan.start();
-       // log.start();
-       // au.start();
-
+        LoginLayout login = new LoginLayout();
         Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -32,12 +20,12 @@ public class sqlConnect {
             }
         });
         th.start();
-        EventQueue.invokeLater(gui.r);
-       // login.setVisible(true);
+        login.r.start();
+      //  SwingUtilities.invokeLater(login.r);
     }
     //Handles login operation
     public static boolean loginHandler(String login, String password) throws Exception {
-        addUser mainpanel = new addUser();
+        MainGUI gui = new MainGUI();
         try {
             Connection connection = getConnection();
             PreparedStatement getQuery = connection.prepareStatement("SELECT login, password FROM login_system");
@@ -48,10 +36,11 @@ public class sqlConnect {
                 array.add(result.getString("password"));
             }
             if (array.contains(login) && array.contains(password)){
-                mainpanel.setVisible(true);
+                LayoutChanger layout = new LayoutChanger();
+                layout.changeLayout(1);
                 return true;
             } else {
-                mainpanel.ShowError("Логин и/или пароль введен не верно!");
+                gui.ShowError("Логин и/или пароль введен не верно!");
                 return false;
             }
         } catch (Exception ex) {
