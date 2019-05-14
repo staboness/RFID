@@ -5,47 +5,20 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/CardLayout$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/CardLayout$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/CardLayout$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/CardLayout$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/CardLayout$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/CardLayout$ScanRFID$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/CardLayout$ScanRFID.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/CardLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/CardLayout.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/LoginLayout$1$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/LoginLayout$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/LoginLayout$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/LoginLayout.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/LoginLayout.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$1$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$1$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$1$4.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/MainGUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/MainGUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/MainGUI$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/MainGUI$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/MainGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/MainGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$imageButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$journal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$postButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser$scanRFID.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/addUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/journalFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/journalFrame$addUserEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/journalFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/layoutChanger$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/layoutChanger.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/loginFrame$loginListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/loginFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/scanCardLayout$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/scanCardLayout$manualEnter$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/scanCardLayout$manualEnter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/scanCardLayout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RFID/sqlConnect$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/sqlConnect$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/sqlConnect$Users.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/sqlConnect$Users.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RFID/sqlConnect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RFID/sqlConnect.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CardLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CardLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LayoutChanger.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginLayout.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ScanCardLayout.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SqlConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SqlConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/addUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/journalFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/loginFrame.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,9 +32,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SqlConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="9" selection-end-column="36" />
+            <state>
+              <caret selection-end-line="2" selection-end-column="3" />
               <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/LoginLayout.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -71,23 +58,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/CardLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1383">
-              <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+            <state relative-caret-position="34">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2765#2766#0" expanded="true" />
-                <element signature="e#2845#2846#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LoginLayout.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
-              <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -97,14 +71,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/MainGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="208" column="41" lean-forward="true" selection-start-line="208" selection-start-column="41" selection-end-line="208" selection-end-column="41" />
+            <state relative-caret-position="374">
+              <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
               <folding>
+                <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#10054#10055#0" expanded="true" />
-                <element signature="e#10084#10085#0" expanded="true" />
-                <element signature="e#10072#10073#0" expanded="true" />
-                <element signature="e#10117#10118#0" expanded="true" />
+                <element signature="e#10194#10195#0" expanded="true" />
+                <element signature="e#10227#10228#0" expanded="true" />
+                <element signature="e#10263#10264#0" expanded="true" />
+                <element signature="e#10308#10309#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -143,11 +118,11 @@
         <option value="$PROJECT_DIR$/src/addUser.java" />
         <option value="$PROJECT_DIR$/src/sqlConnect.java" />
         <option value="$PROJECT_DIR$/src/ScanCardLayout.java" />
-        <option value="$PROJECT_DIR$/src/LoginLayout.java" />
         <option value="$PROJECT_DIR$/src/LayoutChanger.java" />
-        <option value="$PROJECT_DIR$/src/MainGUI.java" />
-        <option value="$PROJECT_DIR$/src/CardLayout.java" />
         <option value="$PROJECT_DIR$/src/SqlConnect.java" />
+        <option value="$PROJECT_DIR$/src/LoginLayout.java" />
+        <option value="$PROJECT_DIR$/src/CardLayout.java" />
+        <option value="$PROJECT_DIR$/src/MainGUI.java" />
       </list>
     </option>
   </component>
@@ -161,8 +136,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,15 +156,17 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557839748122" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557852535274" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Example" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.other" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -235,7 +210,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14658849" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14978679" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -284,48 +259,18 @@
     <entry file="file://$PROJECT_DIR$/.gitattributes">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ScanCardLayout.java">
+    <entry file="file://$PROJECT_DIR$/src/ScanCardLayout.java" />
+    <entry file="file://$PROJECT_DIR$/src/addUser.java" />
+    <entry file="file://$PROJECT_DIR$/src/loginFrame.java" />
+    <entry file="file://$PROJECT_DIR$/src/LayoutChanger.java" />
+    <entry file="file://$PROJECT_DIR$/src/journalFrame.java" />
+    <entry file="file://$PROJECT_DIR$/src/a.java" />
+    <entry file="file://$PROJECT_DIR$/src/SqlConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+        <state>
+          <caret selection-end-line="2" selection-end-column="3" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/addUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="146" column="13" selection-start-line="146" selection-start-column="13" selection-end-line="146" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/loginFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LayoutChanger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/journalFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="76" column="30" lean-forward="true" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="55" />
-          <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -333,9 +278,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/LoginLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="77" column="30" selection-start-line="77" selection-start-column="30" selection-end-line="77" selection-end-column="30" />
+        <state relative-caret-position="34">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -343,21 +289,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CardLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1383">
-          <caret line="10" column="37" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+        <state relative-caret-position="34">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2765#2766#0" expanded="true" />
-            <element signature="e#2845#2846#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SqlConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="9" selection-end-column="36" />
-          <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -365,14 +300,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MainGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="208" column="41" lean-forward="true" selection-start-line="208" selection-start-column="41" selection-end-line="208" selection-end-column="41" />
+        <state relative-caret-position="374">
+          <caret line="61" column="23" lean-forward="true" selection-start-line="61" selection-start-column="23" selection-end-line="61" selection-end-column="23" />
           <folding>
+            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#10054#10055#0" expanded="true" />
-            <element signature="e#10084#10085#0" expanded="true" />
-            <element signature="e#10072#10073#0" expanded="true" />
-            <element signature="e#10117#10118#0" expanded="true" />
+            <element signature="e#10194#10195#0" expanded="true" />
+            <element signature="e#10227#10228#0" expanded="true" />
+            <element signature="e#10263#10264#0" expanded="true" />
+            <element signature="e#10308#10309#0" expanded="true" />
           </folding>
         </state>
       </provider>

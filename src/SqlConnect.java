@@ -1,3 +1,6 @@
+/**
+ * Created by Rodin Maxim on May, 2019
+ */
 import javax.swing.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,6 +32,10 @@ public class SqlConnect {
             }
             if (array.contains(login) && array.contains(password)){
                 MainGUI gui = new MainGUI();
+                connection.close();
+                getQuery.close();
+                result.close();
+                System.out.println("Connection closed at loginHandler");
                 return true;
             } else {
                 ShowError("Логин и/или пароль введен не верно!");
@@ -53,6 +60,10 @@ public class SqlConnect {
                 array.add(result.getString("photo"));
                 array.add(result.getString("rfid"));
             }
+            connection.close();
+            result.close();
+            getQuery.close();
+            System.out.println("Connection closed at checkifExists");
             return array;
         } catch (Exception ex) {
             System.out.println(ex);
@@ -66,13 +77,17 @@ public class SqlConnect {
             String fixedPath = photopath.replace("\\", "\\\\");
             ArrayList<String> array;
             array = checkifExists(firstname, secname, patron, photopath, rfid);
-            if (!array.contains(firstname) && !array.contains(secname) && !array.contains(patron) && !array.contains(photopath) && !array.contains(rfid)) {
+            if (!array.contains(firstname) || !array.contains(secname) || !array.contains(patron) || !array.contains(photopath) && !array.contains(rfid)) {
                 PreparedStatement post = connection.prepareStatement("INSERT INTO users (firstname, secondname, patronymic, photo, rfid, accesslevel, position) " +
                         "VALUES ('" + firstname + "','" + secname + "','" + patron + "','" + fixedPath + "','" + rfid +"', '"+ accesslevel + "', '" + position + "')");
                 post.executeUpdate();
+                post.close();
+                connection.close();
+                System.out.println("Connection closed at postUser");
             } else {
                 ShowError("Пользователь уже существует!");
             }
+
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -94,12 +109,12 @@ public class SqlConnect {
             return null;
         }
     }
-    public ArrayList<Users> getUsers(){
+    public ArrayList<Users> getUsers() throws Exception{
         ArrayList<Users> users = new ArrayList<Users>();
-        try {
         Connection con = getConnection();
-        Statement st;
-        ResultSet result;
+        Statement st = null;
+        ResultSet result = null;
+        try {
         Users u;
             st = con.createStatement();
             result = st.executeQuery("SELECT id, firstname, secondname, patronymic, photo, rfid, accesslevel, position FROM users");
@@ -119,6 +134,10 @@ public class SqlConnect {
         } catch (Exception ex) {
             System.out.println(ex);
         }
+        con.close();
+        st.close();
+        result.close();
+        System.out.println("Connection at getUsers() closed");
         return users;
     }
 
