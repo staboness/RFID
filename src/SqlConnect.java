@@ -1,31 +1,23 @@
 import javax.swing.*;
-import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
-import static java.lang.Thread.currentThread;
-
 public class SqlConnect {
     public static void main(String[] args) throws Exception {
-        LoginLayout login = new LoginLayout();
         Thread th = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     getConnection();
-                    System.out.println(currentThread());
-                    Thread.sleep(1000);
                 } catch (Exception ex){
                     System.out.println(ex);
                 }
             }
         });
         th.start();
-        login.r.start();
-      //  SwingUtilities.invokeLater(login.r);
+        LoginLayout login = new LoginLayout();
     }
     //Handles login operation
     public static boolean loginHandler(String login, String password) throws Exception {
-        MainGUI gui = new MainGUI();
         try {
             Connection connection = getConnection();
             PreparedStatement getQuery = connection.prepareStatement("SELECT login, password FROM login_system");
@@ -36,11 +28,10 @@ public class SqlConnect {
                 array.add(result.getString("password"));
             }
             if (array.contains(login) && array.contains(password)){
-                LayoutChanger layout = new LayoutChanger();
-                layout.changeLayout(1);
+                MainGUI gui = new MainGUI();
                 return true;
             } else {
-                gui.ShowError("Логин и/или пароль введен не верно!");
+                ShowError("Логин и/или пароль введен не верно!");
                 return false;
             }
         } catch (Exception ex) {
@@ -70,7 +61,6 @@ public class SqlConnect {
     }
     //Post user to database
     public static void postUser(String firstname, String secname, String patron, String photopath, String position, String accesslevel, String rfid) throws Exception {
-        addUser addUser = new addUser();
         try {
             Connection connection = getConnection();
             String fixedPath = photopath.replace("\\", "\\\\");
@@ -81,7 +71,7 @@ public class SqlConnect {
                         "VALUES ('" + firstname + "','" + secname + "','" + patron + "','" + fixedPath + "','" + rfid +"', '"+ accesslevel + "', '" + position + "')");
                 post.executeUpdate();
             } else {
-                addUser.ShowError("Пользователь уже существует!");
+                ShowError("Пользователь уже существует!");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -89,7 +79,6 @@ public class SqlConnect {
     }
     //Connection handler
     public static Connection getConnection() throws Exception {
-        addUser addUser = new addUser();
         try {
             String driver = "com.mysql.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/rfid?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -101,7 +90,7 @@ public class SqlConnect {
             return connection;
         } catch (Exception e) {
             System.out.print(e);
-            addUser.ShowError("Нет соединения с базой данных!");
+            ShowError("Нет соединения с базой данных!");
             return null;
         }
     }
@@ -113,7 +102,7 @@ public class SqlConnect {
         ResultSet result;
         Users u;
             st = con.createStatement();
-            result = st.executeQuery("SELECT id, firstname, secondname, patronymic, photo, accesslevel, position FROM users");
+            result = st.executeQuery("SELECT id, firstname, secondname, patronymic, photo, rfid, accesslevel, position FROM users");
             while(result.next()){
                 u = new Users(
                         result.getInt("id"),
@@ -121,6 +110,7 @@ public class SqlConnect {
                         result.getString("secondname"),
                         result.getString("patronymic"),
                         result.getString("photo"),
+                        result.getString("rfid"),
                         result.getInt("accesslevel"),
                         result.getString("position")
                 );
@@ -138,15 +128,17 @@ public class SqlConnect {
         private String Sname;
         private String Lname;
         private String Photo;
+        private String Rfid;
         private int Access;
         private String Position;
 
-        public Users(int id, String fname, String sname, String lname, String photo, int access, String position){
+        public Users(int id, String fname, String sname, String lname, String photo, String rfid, int access, String position){
             this.Id = id;
             this.Fname = fname;
             this.Sname = sname;
             this.Lname = lname;
             this.Photo = photo;
+            this.Rfid = rfid;
             this.Access = access;
             this.Position = position;
         }
@@ -171,6 +163,8 @@ public class SqlConnect {
             return this.Photo;
         }
 
+        public String getRfid() { return this.Rfid; }
+
         public int getAccess(){
             return this.Access;
         }
@@ -178,5 +172,9 @@ public class SqlConnect {
         public String getPosition(){
             return this.Position;
         }
+    }
+
+    public static void ShowError(String errorMsg) {
+        JOptionPane.showMessageDialog(null, errorMsg, "Ошибка", JOptionPane.ERROR_MESSAGE);
     }
 }

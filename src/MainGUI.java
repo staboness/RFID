@@ -9,49 +9,66 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import static java.lang.Thread.currentThread;
-
 class MainGUI {
-    JTextField rfid = new JTextField("", 10);
-    private String cuid;
-        Thread r = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("MainGUI Thread: " + currentThread());
+    final JFrame frame;
+    final JPanel pane;
+    final JPanel leftpane;
+    final JPanel bottompane;
+    final JPanel centerpane;
+    final JPanel rightpane;
+    JTextField rfid;
+    JLabel imglabel;
+    JTextField firstname;
+    JLabel namelabel;
+    JTextField secname;
+    JLabel secnamelabel;
+    JTextField patron;
+    JLabel patronlabel;
+    JLabel rfidlabel;
+    JButton selectfile;
+    JFileChooser filechooser;
+    JTextField position;
+    JLabel poslabel;
+    JLabel accesslabel;
+    JButton button;
+    JButton rfidbtn;
+    JTable table;
+    JScrollPane scrollpane;
+    JComboBox combobox;
+    final String[] accesslevel = {"1", "2"};
+    String[] colNames = {"Id", "Имя", "Фамилия", "Отчество", "Путь к фото", "RFID", "Уровень доступа", "Должность"};
+    SqlConnect sql = new SqlConnect();
+    public MainGUI() {
                 //Content
-                JLabel imglabel = new JLabel();
-                JTextField firstname = new JTextField("", 10);
-                JLabel namelabel = new JLabel("Имя:");
-                JTextField secname = new JTextField("", 10);
-                JLabel secnamelabel = new JLabel("Фамилия:");
-                JTextField patron = new JTextField("", 10);
-                JLabel patronlabel = new JLabel("Отчество:");
-                JLabel rfidlabel = new JLabel("RFID:");
-                JButton selectfile = new JButton("Фото");
-                JFileChooser filechooser = new JFileChooser();
-                JTextField position = new JTextField("", 10);
-                JLabel poslabel = new JLabel("Должность:");
-                JLabel accesslabel = new JLabel("Уровень доступа:");
-                JButton button = new JButton("Добавить");
-                JButton rfidbtn = new JButton("Сканировать карту пользователя");
-                JButton unclickable = new JButton("Добавление пользователя");
-                JButton journal = new JButton("Журнал пользователей");
-                final String[] accesslevel = {"1", "2"};
-                String[] colNames = {"Id", "Имя", "Фамилия", "Отчество", "Путь к фото", "Уровень доступа", "Должность"};
-                JTable table = new JTable();
-                JScrollPane scrollpane = new JScrollPane(table);
-                JComboBox combobox = new JComboBox(accesslevel);
-                SqlConnect sql = new SqlConnect();
+                imglabel = new JLabel();
+                firstname = new JTextField("", 10);
+                namelabel = new JLabel("Имя:");
+                secname = new JTextField("", 10);
+                secnamelabel = new JLabel("Фамилия:");
+                patron = new JTextField("", 10);
+                patronlabel = new JLabel("Отчество:");
+                rfidlabel = new JLabel("RFID:");
+                rfid = new JTextField("", 10);
+                selectfile = new JButton("Фото");
+                filechooser = new JFileChooser();
+                position = new JTextField("", 10);
+                poslabel = new JLabel("Должность:");
+                accesslabel = new JLabel("Уровень доступа:");
+                button = new JButton("Добавить");
+                rfidbtn = new JButton("Сканировать карту пользователя");
+                table = new JTable();
+                scrollpane = new JScrollPane(table);
+                combobox = new JComboBox(accesslevel);
                 //Initializing Nested Frames
-                final JFrame frame = new JFrame("Main GUI Panel");
+                frame = new JFrame("Main GUI Panel");
+                pane = new JPanel(new BorderLayout(5,5));
+                leftpane = new JPanel(new GridBagLayout());
+                bottompane = new JPanel(new FlowLayout());
+                centerpane = new JPanel(new BorderLayout());
+                rightpane = new JPanel(new GridLayout());
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new BorderLayout(5,5));
-                final JPanel pane = new JPanel(new BorderLayout(5,5));
                 frame.add(pane, BorderLayout.CENTER);
-                final JPanel leftpane = new JPanel(new GridBagLayout());
-                final JPanel bottompane = new JPanel(new FlowLayout());
-                final JPanel centerpane = new JPanel(new BorderLayout());
-                final JPanel rightpane = new JPanel(new GridLayout());
                 pane.add(rightpane, BorderLayout.EAST);
                 pane.add(leftpane, BorderLayout.WEST);
                 pane.add(bottompane, BorderLayout.SOUTH);
@@ -62,8 +79,6 @@ class MainGUI {
                 rfidbtn.setPreferredSize(new Dimension(220,20));
                 button.setPreferredSize(new Dimension(220, 20));
                 combobox.setPreferredSize(new Dimension(113,20));
-                unclickable.setPreferredSize(new Dimension(250,30));
-                journal.setPreferredSize(new Dimension(250,30));
                 imglabel.setPreferredSize(new Dimension(300,20));
                 //Left pane
                 c.fill = GridBagConstraints.HORIZONTAL;
@@ -123,30 +138,27 @@ class MainGUI {
                 Thread th = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        Object[] rowData = new Object[7];
+                        Object[] rowData = new Object[8];
                         for(int i = 0; i < sql.getUsers().size(); i++) {
                             rowData[0] = sql.getUsers().get(i).getId();
                             rowData[1] = sql.getUsers().get(i).getFname();
                             rowData[2] = sql.getUsers().get(i).getSname();
                             rowData[3] = sql.getUsers().get(i).getLname();
                             rowData[4] = sql.getUsers().get(i).getPhoto();
-                            rowData[5] = sql.getUsers().get(i).getAccess();
-                            rowData[6] = sql.getUsers().get(i).getPosition();
+                            rowData[5] = sql.getUsers().get(i).getRfid();
+                            rowData[6] = sql.getUsers().get(i).getAccess();
+                            rowData[7] = sql.getUsers().get(i).getPosition();
                             model.addRow(rowData);
                         }
                     }
                 });
                 th.start();
                 //misc frame stuff
-                unclickable.setEnabled(false);
-              //  bottompane.add(unclickable);
-             //   bottompane.add(journal);
                 frame.pack();
                 frame.setVisible(true);
                 frame.setLocationRelativeTo(null);
-            //    rfid.setEnabled(false);
-                unclickable.setEnabled(false);
-              //  frame.setResizable(false);
+                rfid.setEnabled(false);
+              //frame.setResizable(false);
 
                 //Select image of user button
                 selectfile.addActionListener(new ActionListener() {
@@ -164,12 +176,13 @@ class MainGUI {
                                 imglabel.setIcon(new ImageIcon(dimimg));
                             } catch (Exception ex) {
                                 System.out.println(ex);
-                                //ShowError("Выберите файл с раширением JPG!");
+                                sql.ShowError("Выберите файл с раширением JPG!");
                             }
 
                         }
                     }
                 });
+
                 //Post user button
                 button.addActionListener(new ActionListener() {
                     @Override
@@ -177,7 +190,7 @@ class MainGUI {
                         SqlConnect sql = new SqlConnect();
                         try {
                             if (firstname.getText().equals("") || secname.getText().equals("") || patron.getText().equals("") || imglabel == null || position.getText().equals("")) {
-                                ShowError("Вы заполнили не все поля!");
+                                sql.ShowError("Вы заполнили не все поля!");
                             } else {
                                 sql.postUser(firstname.getText().trim(),
                                         secname.getText().trim(),
@@ -188,36 +201,25 @@ class MainGUI {
                                         rfid.getText().trim());
                             }
                         } catch (Exception ex) {
-                            ShowError("Вы не выбрали изображение/произошла другая ошибка!");
+                            sql.ShowError("Вы не выбрали изображение/произошла другая ошибка!");
                             System.out.println(ex);
                         }
                     }
                 });
                 //Open new ScanCardLayout
-                rfidbtn.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        CardLayout card = new CardLayout();
-                        LayoutChanger layout = new LayoutChanger();
-                        layout.changeLayout(2);
-                        rfid.setText(card.cuid);
-                    }
-                });
-
-            }
-        });
-    public void SetRfid() {
-        CardLayout card = new CardLayout();
-        rfid.setText(card.GetUID());
-        System.out.println(card.GetUID());
+                        rfidbtn.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                CardLayout card = new CardLayout(firstname.getText(), secname.getText(), patron.getText(), position.getText());
+                                frame.dispose();
+                            }
+                        });
+    }
+    public void setRfidUID (String UID) {
+        rfid.setText(UID);
     }
 
-    public void PrintThread(){
-        System.out.println("MainGUI Thread While CardLayout Launched " + currentThread());
-        SetRfid();
-    }
-
-    public void ShowError(String errorMsg) {
-           JOptionPane.showMessageDialog(null, errorMsg, "Ошибка", JOptionPane.ERROR_MESSAGE);
+    public void setRfidEnabled() {
+                rfid.setEnabled(true);
     }
 }

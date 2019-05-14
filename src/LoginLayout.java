@@ -6,33 +6,42 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static java.lang.Thread.currentThread;
 
 public class LoginLayout {
-    Thread r = new Thread(new Runnable() {
-        @Override
-        public void run() {
-            System.out.println("Login Layout Thread: " + currentThread());
-            JLabel loginlabel = new JLabel("Логин:");
-            JLabel passlabel = new JLabel("Пароль:");
-            JTextField logintext = new JTextField("",8);
-            JPasswordField passtext = new JPasswordField("", 8);
-            JButton loginbtn = new JButton("Войти");
-            SqlConnect sql = new SqlConnect();
-            final JFrame frame = new JFrame("Login panel");
+    JLabel loginlabel;
+    JLabel passlabel;
+    JTextField logintext;
+    JPasswordField passtext;
+    JButton loginbtn;
+    final JFrame frame;
+    final JPanel pane;
+    final JPanel logscreen;
+    JPanel dynamicLabels;
+    SqlConnect sql = new SqlConnect();
+    public LoginLayout() {
+            //Initializing swing
+            loginlabel = new JLabel("Логин:");
+            passlabel = new JLabel("Пароль:");
+            logintext = new JTextField("",8);
+            passtext = new JPasswordField("", 8);
+            loginbtn = new JButton("Войти");
+            frame = new JFrame("Login panel");
+            pane  = new JPanel(new BorderLayout(5,5));
+            logscreen = new JPanel(new GridBagLayout());
+            dynamicLabels = new JPanel(new BorderLayout(1,1));
+            //Frame etc.
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setLayout(new BorderLayout(5,5));
-            final JPanel pane = new JPanel(new BorderLayout(5,5));
-            final JPanel logscreen = new JPanel(new GridBagLayout());
             logintext.setPreferredSize(new Dimension(0,20));
             passtext.setPreferredSize(new Dimension(0,20));
             loginbtn.setPreferredSize(new Dimension(140,25));
             frame.add(pane);
-            JPanel dynamicLabels = new JPanel(new BorderLayout(1,1));
             dynamicLabels.setBorder(new TitledBorder("Вход в учетную запись") );
+            //Add borders
             pane.add(dynamicLabels, BorderLayout.CENTER);
             dynamicLabels.add(logscreen, BorderLayout.CENTER);
             logscreen.setBorder(BorderFactory.createCompoundBorder(new EmptyBorder(110, 200, 110, 200), new EtchedBorder(5)));
+            //Add components to pane
             GridBagConstraints c = new GridBagConstraints();
             c.gridx = 0;
             c.gridy = 0;
@@ -51,11 +60,11 @@ public class LoginLayout {
             logscreen.add(logintext, c);
             c.gridy++;
             logscreen.add(passtext, c);
-
+            //Finish frame operations
             frame.pack();
             frame.setVisible(true);
             frame.setLocationRelativeTo(null);
-
+            //Login btn listener
             loginbtn.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -71,5 +80,4 @@ public class LoginLayout {
                 }
             });
         }
-    });
 }
