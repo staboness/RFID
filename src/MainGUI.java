@@ -15,6 +15,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 class MainGUI {
+    String filechooserAbsolutePath;
     JFrame frame;
     JPanel pane;
     JPanel leftpane;
@@ -76,6 +77,7 @@ class MainGUI {
                 if (filechooser.showOpenDialog(selectfile) == JFileChooser.APPROVE_OPTION) {
                     try {
                         image = ImageIO.read(new File(filechooser.getSelectedFile().getAbsolutePath()));
+                        filechooserAbsolutePath = filechooser.getSelectedFile().getAbsolutePath();
                         Image dimimg = image.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(),
                                 Image.SCALE_SMOOTH);
                         imglabel.setIcon(new ImageIcon(dimimg));
@@ -101,7 +103,7 @@ class MainGUI {
                         sql.postUser(firstname.getText().trim(),
                                 secname.getText().trim(),
                                 patron.getText().trim(),
-                                filechooser.getSelectedFile().getAbsolutePath(),
+                                filechooserAbsolutePath,
                                 position.getText().trim(),
                                 combobox.getSelectedItem().toString(),
                                 rfid.getText().trim());
@@ -120,7 +122,7 @@ class MainGUI {
         rfidbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                CardLayout card = new CardLayout(firstname.getText(), secname.getText(), patron.getText(), position.getText(), imglabel.getIcon());
+                CardLayout card = new CardLayout(firstname.getText(), secname.getText(), patron.getText(), position.getText(), imglabel.getIcon(), filechooser.getSelectedFile().getAbsolutePath());
                 frame.dispose();
             }
         });
@@ -273,5 +275,9 @@ class MainGUI {
 
     public void setRfidEnabled() {
                 rfid.setEnabled(true);
+    }
+
+    public void setFilechooserAbsolutePath(String filechooserAbsolutePath) {
+        this.filechooserAbsolutePath = filechooserAbsolutePath;
     }
 }

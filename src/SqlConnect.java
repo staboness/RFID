@@ -47,7 +47,7 @@ public class SqlConnect {
         }
     }
     //Handles user exist check
-    public static ArrayList<String> checkifExists (String firstname, String secname, String patron, String photopath, String rfid) throws Exception {
+    public static ArrayList<String> checkifExists () throws Exception {
         try {
             Connection connection = getConnection();
             PreparedStatement getQuery = connection.prepareStatement("SELECT firstname, secondname, patronymic, photo, rfid FROM users");
@@ -74,21 +74,25 @@ public class SqlConnect {
     public static void postUser(String firstname, String secname, String patron, String photopath, String position, String accesslevel, String rfid) throws Exception {
         try {
             Connection connection = getConnection();
+            PreparedStatement getQuery = connection.prepareStatement("SELECT MAX(id) maxid FROM users");
+            ResultSet result = getQuery.executeQuery();
+            result.next();
+            int lastrow = result.getInt("maxid");
+            lastrow++;
             String fixedPath = photopath.replace("\\", "\\\\");
             ArrayList<String> array;
-            array = checkifExists(firstname, secname, patron, photopath, rfid);
+            array = checkifExists();
             if (!array.contains(firstname) || !array.contains(secname) || !array.contains(patron) || !array.contains(photopath) && !array.contains(rfid)) {
-                PreparedStatement post = connection.prepareStatement("INSERT INTO users (firstname, secondname, patronymic, photo, rfid, accesslevel, position) " +
-                        "VALUES ('" + firstname + "','" + secname + "','" + patron + "','" + fixedPath + "','" + rfid +"', '"+ accesslevel + "', '" + position + "')");
+                PreparedStatement post = connection.prepareStatement("INSERT INTO users (id, firstname, secondname, patronymic, photo, rfid, accesslevel, position) " +
+                        "VALUES ('" + lastrow + "', '" + firstname + "','" + secname + "','" + patron + "','" + fixedPath + "','" + rfid +"', '"+ accesslevel + "', '" + position + "')");
+                System.out.println("Connection closed at postUser");
                 post.executeUpdate();
                 post.close();
                 connection.close();
-                System.out.println("Connection closed at postUser");
             } else {
                 ShowError("Пользователь уже существует!");
             }
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }

@@ -26,7 +26,7 @@ public class CardLayout {
     JButton manual;
     MainGUI gui = new MainGUI();
 
-    public CardLayout(String name, String secname, String patron, String position, Icon img) {
+    public CardLayout(String name, String secname, String patron, String position, Icon img, String imagepath) {
         frameinit();
         elementsSize();
         borders();
@@ -36,6 +36,7 @@ public class CardLayout {
         gui.patron.setText(patron);
         gui.position.setText(position);
         gui.imglabel.setIcon(img);
+        gui.setFilechooserAbsolutePath(imagepath);
         //Frame finish
         components();
         frameFinish();
