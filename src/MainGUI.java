@@ -60,10 +60,26 @@ class MainGUI {
         //Table action listener
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent event) {
-                /**TODO
-                 * Call new frame to edit existing mysql records
-                 * **/
-                System.out.println(table.getValueAt(table.getSelectedRow(), 0).toString());
+                if (!event.getValueIsAdjusting() && table.getSelectedRow() != -1) {
+                    try {
+                        BufferedImage image;
+                        image = ImageIO.read(new File(table.getValueAt(table.getSelectedRow(), 4).toString()));
+                        Image dimimg = image.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_SMOOTH);
+                        UpdateInfoLayout update = new UpdateInfoLayout(table.getValueAt(table.getSelectedRow(), 0).toString(),
+                                table.getValueAt(table.getSelectedRow(), 1).toString(),
+                                table.getValueAt(table.getSelectedRow(), 2).toString(),
+                                table.getValueAt(table.getSelectedRow(), 3).toString(),
+                                table.getValueAt(table.getSelectedRow(), 4).toString(),
+                                table.getValueAt(table.getSelectedRow(), 5).toString(),
+                                table.getValueAt(table.getSelectedRow(), 6).toString(),
+                                table.getValueAt(table.getSelectedRow(), 7).toString());
+                        update.imglabel.setIcon(new ImageIcon(dimimg));
+                        System.out.println(table.getValueAt(table.getSelectedRow(), 0).toString());
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+
+                }
             }
         });
         //Select image of user action listener
@@ -107,9 +123,9 @@ class MainGUI {
                                 position.getText().trim(),
                                 combobox.getSelectedItem().toString(),
                                 rfid.getText().trim());
-                                model.setRowCount(0);
+
                                 startTableFill();
-                                table.revalidate();
+
                                 sql.getConnection().close();
                     }
                 } catch (Exception ex) {
@@ -122,6 +138,9 @@ class MainGUI {
         rfidbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (imglabel.getIcon() == null){
+                    System.out.println("SHIT");
+                }
                 CardLayout card = new CardLayout(firstname.getText(), secname.getText(), patron.getText(), position.getText(), imglabel.getIcon(), filechooser.getSelectedFile().getAbsolutePath());
                 frame.dispose();
             }
@@ -137,7 +156,18 @@ class MainGUI {
     }
 
     private void framecontent(){
-        imglabel = new JLabel();
+        imglabel = new JLabel("");
+        /** TODO: SET IMAGE ICON BY DEFAULT TO CHOOSEPHOTO.JPG
+         * AND UPDATE TABLE AFTER UPDATING USER DATA IN DATABASE **/
+        /*BufferedImage image;
+        try {
+            image = ImageIO.read(new File(filechooser.getSelectedFile().getAbsolutePath()));
+            filechooserAbsolutePath = filechooser.getSelectedFile().getAbsolutePath();
+            Image dimimg = image.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_SMOOTH);
+            imglabel.setIcon(new ImageIcon(dimimg));
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }*/
         firstname = new JTextField("", 10);
         namelabel = new JLabel("Имя:");
         secname = new JTextField("", 10);
@@ -184,6 +214,7 @@ class MainGUI {
 
     private void startTableFill() throws Exception {
         SqlConnect sql = new SqlConnect();
+        model.setRowCount(0);
         Object[] rowData = new Object[8];
         for (int i = 0; i < sql.getUsers().size(); i++) {
             rowData[0] = sql.getUsers().get(i).getId();
@@ -195,6 +226,7 @@ class MainGUI {
             rowData[6] = sql.getUsers().get(i).getAccess();
             rowData[7] = sql.getUsers().get(i).getPosition();
             model.addRow(rowData);
+            table.revalidate();
         }
         try {
             sql.getConnection().close();
@@ -274,7 +306,7 @@ class MainGUI {
     }
 
     public void setRfidEnabled() {
-                rfid.setEnabled(true);
+        rfid.setEnabled(true);
     }
 
     public void setFilechooserAbsolutePath(String filechooserAbsolutePath) {

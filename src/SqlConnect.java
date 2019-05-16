@@ -113,13 +113,30 @@ public class SqlConnect {
             return null;
         }
     }
+
+    public static void updateUsers(int id, String firstname, String secname, String patron, String photopath, String rfid, String accesslevel, String position) throws Exception {
+        try{
+            Connection con = getConnection();
+            String fixedPath = photopath.replace("\\", "\\\\");
+            PreparedStatement post = con.prepareStatement("UPDATE users SET " +
+                    "firstname = '" + firstname + "', secondname = '" + secname + "' , patronymic = '" + patron + "', photo = '" + fixedPath + "', rfid = '" + rfid + "', " +
+                    "accesslevel = '" + accesslevel + "', position = '" + position + "' WHERE id = '" + id + "'");
+            post.executeUpdate();
+            post.close();
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+            System.out.println("Exception in updateUsers");
+        }
+    }
+
     public ArrayList<Users> getUsers() throws Exception{
         ArrayList<Users> users = new ArrayList<Users>();
         Connection con = getConnection();
         Statement st = null;
         ResultSet result = null;
         try {
-        Users u;
+            Users u;
             st = con.createStatement();
             result = st.executeQuery("SELECT id, firstname, secondname, patronymic, photo, rfid, accesslevel, position FROM users");
             while(result.next()){
