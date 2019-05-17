@@ -15,6 +15,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 class MainGUI {
+    //Singleton pattern
+    private static MainGUI instance = null;
+    BufferedImage image;
     String filechooserAbsolutePath;
     JFrame frame;
     JPanel pane;
@@ -62,7 +65,6 @@ class MainGUI {
             public void valueChanged(ListSelectionEvent event) {
                 if (!event.getValueIsAdjusting() && table.getSelectedRow() != -1) {
                     try {
-                        BufferedImage image;
                         image = ImageIO.read(new File(table.getValueAt(table.getSelectedRow(), 4).toString()));
                         Image dimimg = image.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_SMOOTH);
                         UpdateInfoLayout update = new UpdateInfoLayout(table.getValueAt(table.getSelectedRow(), 0).toString(),
@@ -86,7 +88,6 @@ class MainGUI {
         selectfile.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                BufferedImage image;
                 filechooser.setCurrentDirectory(new java.io.File("V:/HD wallpapers"));
                 filechooser.setDialogTitle("Выберите фото сотрудника");
                 filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -123,9 +124,7 @@ class MainGUI {
                                 position.getText().trim(),
                                 combobox.getSelectedItem().toString(),
                                 rfid.getText().trim());
-
                                 startTableFill();
-
                                 sql.getConnection().close();
                     }
                 } catch (Exception ex) {
@@ -138,16 +137,21 @@ class MainGUI {
         rfidbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (imglabel.getIcon() == null){
-                    System.out.println("SHIT");
-                }
-                CardLayout card = new CardLayout(firstname.getText(), secname.getText(), patron.getText(), position.getText(), imglabel.getIcon(), filechooser.getSelectedFile().getAbsolutePath());
-                frame.dispose();
+                CardLayout card = new CardLayout();
             }
         });
     }
 
     private void frameFinish(){
+        frame.pack();
+        try {
+            image = ImageIO.read(new File(getClass().getResource("res/choosephoto.jpg").toURI()));
+            filechooserAbsolutePath = "res/choosephoto.jpg";
+            Image dimimg = image.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_SMOOTH);
+            imglabel.setIcon(new ImageIcon(dimimg));
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
         frame.pack();
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
@@ -157,17 +161,6 @@ class MainGUI {
 
     private void framecontent(){
         imglabel = new JLabel("");
-        /** TODO: SET IMAGE ICON BY DEFAULT TO CHOOSEPHOTO.JPG
-         * AND UPDATE TABLE AFTER UPDATING USER DATA IN DATABASE **/
-        /*BufferedImage image;
-        try {
-            image = ImageIO.read(new File(filechooser.getSelectedFile().getAbsolutePath()));
-            filechooserAbsolutePath = filechooser.getSelectedFile().getAbsolutePath();
-            Image dimimg = image.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_SMOOTH);
-            imglabel.setIcon(new ImageIcon(dimimg));
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }*/
         firstname = new JTextField("", 10);
         namelabel = new JLabel("Имя:");
         secname = new JTextField("", 10);
@@ -212,7 +205,7 @@ class MainGUI {
         imglabel.setPreferredSize(new Dimension(300, 20));
     }
 
-    private void startTableFill() throws Exception {
+    protected void startTableFill() throws Exception {
         SqlConnect sql = new SqlConnect();
         model.setRowCount(0);
         Object[] rowData = new Object[8];
@@ -311,5 +304,11 @@ class MainGUI {
 
     public void setFilechooserAbsolutePath(String filechooserAbsolutePath) {
         this.filechooserAbsolutePath = filechooserAbsolutePath;
+    }
+    //Singleton pattern
+    public static MainGUI getInstance(){
+        if(instance == null)
+            instance =  new MainGUI();
+        return instance;
     }
 }

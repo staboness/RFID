@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class CardLayout {
-    public String cuid;
     String readline;
     SerialPort comPort;
     String commPort = "COM7";
@@ -24,19 +23,12 @@ public class CardLayout {
     JPanel dynamicLabels;
     JLabel scanmsg;
     JButton manual;
-    MainGUI gui = new MainGUI();
+    MainGUI gui = MainGUI.getInstance();
 
-    public CardLayout(String name, String secname, String patron, String position, Icon img, String imagepath) {
+    public CardLayout() {
         frameinit();
         elementsSize();
         borders();
-        //Dont pay attention
-        gui.firstname.setText(name);
-        gui.secname.setText(secname);
-        gui.patron.setText(patron);
-        gui.position.setText(position);
-        gui.imglabel.setIcon(img);
-        gui.setFilechooserAbsolutePath(imagepath);
         //Frame finish
         components();
         frameFinish();
@@ -139,7 +131,7 @@ public class CardLayout {
     }
 
     public void cuid(String id) {
-        System.out.println("cuid=" + id + ".");
+        System.out.println("Card uid = " + id + ".");
         gui.setRfidUID(id);
         frame.dispose();
     }

@@ -35,6 +35,7 @@ public class UpdateInfoLayout {
     JButton update;
     JComboBox combobox;
     SqlConnect sql = new SqlConnect();
+    MainGUI gui = MainGUI.getInstance();
     final String[] accesslevel = {"1", "2"};
 
     public UpdateInfoLayout(String idString, String firstname, String secname, String patron, String image, String rfid, String level, String position){
@@ -90,6 +91,7 @@ public class UpdateInfoLayout {
                             combobox.getSelectedItem().toString().trim(),
                             pos.getText().trim());
                     frame.dispose();
+                    gui.startTableFill();
                 } catch (Exception ex) {
                     System.out.println(ex);
                 }

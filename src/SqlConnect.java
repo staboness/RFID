@@ -31,7 +31,7 @@ public class SqlConnect {
                 array.add(result.getString("password"));
             }
             if (array.contains(login) && array.contains(password)){
-                MainGUI gui = new MainGUI();
+                MainGUI gui = MainGUI.getInstance();
                 connection.close();
                 getQuery.close();
                 result.close();
