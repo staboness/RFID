@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/RFID.iml" filepath="$PROJECT_DIR$/.idea/RFID.iml" />
       <module fileurl="file://$PROJECT_DIR$/RFID.iml" filepath="$PROJECT_DIR$/RFID.iml" />
     </modules>
   </component>
