@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.InputStream;
 
 class MainGUI {
     //Singleton pattern
@@ -86,7 +87,6 @@ class MainGUI {
         });
         //Select image of user action listener
         selectfile.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 filechooser.setCurrentDirectory(new java.io.File("V:/HD wallpapers"));
                 filechooser.setDialogTitle("Выберите фото сотрудника");
@@ -110,7 +110,6 @@ class MainGUI {
         });
         //Post user listener
         button.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 SqlConnect sql = new SqlConnect();
                 try {
@@ -135,7 +134,6 @@ class MainGUI {
         });
         //Open new CardLayout
         rfidbtn.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(ActionEvent e) {
                 CardLayout card = new CardLayout();
             }
@@ -145,8 +143,9 @@ class MainGUI {
     private void frameFinish(){
         frame.pack();
         try {
-            image = ImageIO.read(new File(getClass().getResource("res/choosephoto.jpg").toURI()));
-            filechooserAbsolutePath = "res/choosephoto.jpg";
+            InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("choosephoto.jpg");
+            image = ImageIO.read(is);
+            filechooserAbsolutePath = "main/resources/choosephoto.jpg";
             Image dimimg = image.getScaledInstance(imglabel.getWidth(), imglabel.getHeight(), Image.SCALE_SMOOTH);
             imglabel.setIcon(new ImageIcon(dimimg));
         } catch (Exception ex) {
